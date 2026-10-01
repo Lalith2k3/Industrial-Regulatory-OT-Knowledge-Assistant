@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+*.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Vector stores / indexes / model caches
+*.faiss
+*.index
+chroma/
+.chroma/
+.cache/
+embeddings/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

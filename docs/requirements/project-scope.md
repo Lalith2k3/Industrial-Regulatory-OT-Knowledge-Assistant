@@ -1,0 +1,1 @@
+An industrial regulatory and OT knowledge assistant that answers questions using only an approved document knowledge base and returns supporting citations.
