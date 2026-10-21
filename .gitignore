@@ -22,6 +22,9 @@ build/
 *.pem
 *.key
 
+# Ingestion intermediate artifacts (rebuilt by `python -m app.ingestion run`)
+data/processed/
+
 # Vector stores / indexes / model caches
 *.faiss
 *.index
