@@ -1,0 +1,39 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rag}
+      POSTGRES_DB: rag
+    ports:
+      # 5433 on the host so it does not collide with a locally installed PostgreSQL
+      - "${RAG_DB_PORT:-5433}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag -d rag"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # One-off ingestion jobs: docker compose run --rm ingest run
+  ingest:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    profiles: ["tools"]
+    entrypoint: ["python", "-m", "app.ingestion"]
+    command: ["run"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      RAG_DATABASE_URL: postgresql+psycopg://rag:${POSTGRES_PASSWORD:-rag}@db:5432/rag
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

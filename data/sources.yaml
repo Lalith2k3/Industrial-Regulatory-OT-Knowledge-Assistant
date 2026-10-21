@@ -1,0 +1,107 @@
+# Approved knowledge base (FR-02, US-07).
+# Only sources listed here with `enabled: true` are ingested and retrievable.
+# To add a document: drop the file under data/, add an entry using one of the parsers below,
+# then run `python -m app.ingestion run --source <id>`.
+#
+# Parsers: ecfr_xml | enforcement_guidance_pdf | faq_pdf | nist_sp_pdf
+
+sources:
+  # --- Pipeline safety regulations (current text from eCFR, pinned snapshot) ---------------
+  - id: ecfr-49-cfr-192
+    title: "Transportation of Natural and Other Gas by Pipeline: Minimum Federal Safety Standards"
+    short_title: "49 CFR Part 192"
+    publisher: PHMSA
+    domain: pipeline_safety
+    doc_type: regulation
+    parser: ecfr_xml
+    path: ecfr/title-49-part-192.xml
+    version: "eCFR 2026-10-05"
+    effective_date: 2026-10-05
+    source_url: https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-D/part-192
+    fetch: { title: 49, part: 192, date: 2026-10-05 }
+
+  - id: ecfr-49-cfr-195
+    title: "Transportation of Hazardous Liquids by Pipeline"
+    short_title: "49 CFR Part 195"
+    publisher: PHMSA
+    domain: pipeline_safety
+    doc_type: regulation
+    parser: ecfr_xml
+    path: ecfr/title-49-part-195.xml
+    version: "eCFR 2026-10-05"
+    effective_date: 2026-10-05
+    source_url: https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-D/part-195
+    fetch: { title: 49, part: 195, date: 2026-10-05 }
+
+  # --- PHMSA guidance (latest published editions) -------------------------------------------
+  - id: phmsa-om-enforcement-guidance-195
+    title: "Operations & Maintenance Enforcement Guidance, Part 195 Subpart F"
+    short_title: "PHMSA O&M Enforcement Guidance (Part 195)"
+    publisher: PHMSA
+    domain: pipeline_safety
+    doc_type: enforcement_guidance
+    parser: enforcement_guidance_pdf
+    path: phmsa/o-m-enforcement-guidance-part-195-7-21-2017.pdf
+    version: "Revision 2017-07-21"
+    effective_date: 2017-07-21
+    source_url: https://www.phmsa.dot.gov/sites/phmsa.dot.gov/files/docs/regulatory-compliance/pipeline/enforcement/5781/o-m-enforcement-guidance-part-195-7-21-2017.pdf
+    notes: >
+      Explanatory guidance, not regulation. Its "Existing Code Language" field quotes the 2017
+      regulation text and is intentionally not indexed; the eCFR sources are authoritative.
+
+  - id: phmsa-oq-faq
+    title: "Operator Qualification Frequently Asked Questions"
+    short_title: "PHMSA OQ FAQs"
+    publisher: PHMSA
+    domain: pipeline_safety
+    doc_type: faq
+    parser: faq_pdf
+    path: phmsa/PHMSA Operator Qualification FAQ Guidance.pdf
+    version: "Revised 2022-01-28"
+    effective_date: 2022-01-28
+    source_url: https://www.phmsa.dot.gov/pipeline/operator-qualifications/oq-frequently-asked-questions
+
+  # --- OT cybersecurity ---------------------------------------------------------------------
+  - id: nist-sp-800-82r3
+    title: "Guide to Operational Technology (OT) Security"
+    short_title: "NIST SP 800-82r3"
+    publisher: NIST
+    domain: ot_security
+    doc_type: standard
+    parser: nist_sp_pdf
+    path: nist/NIST.SP.800-82r3.pdf
+    version: "Revision 3 (September 2023)"
+    effective_date: 2023-09-28
+    source_url: https://doi.org/10.6028/NIST.SP.800-82r3
+    notes: >
+      Rev. 4 is in public draft (comments due 2026-11-30); drafts are not approved sources.
+    options:
+      exclude: ["References", "Appendix G"]
+      acronyms: "Appendix A"
+      glossary: "Appendix B"
+      controls: "F.7."
+
+  # --- Superseded (kept on disk for provenance, never ingested) -----------------------------
+  - id: phmsa-cfr-195-2015-pdf
+    title: "Part 195 (PHMSA TQ compilation, current through Amdt. 195-100, 2015)"
+    short_title: "49 CFR Part 195 (2015 compilation)"
+    publisher: PHMSA
+    domain: pipeline_safety
+    doc_type: regulation
+    parser: ecfr_xml
+    path: phmsa/195_Master_195_100_Highlighted.pdf
+    version: "Amdt. 195-100 (2015)"
+    enabled: false
+    superseded_by: ecfr-49-cfr-195
+
+  - id: phmsa-cfr-192-2015-pdf
+    title: "Part 192 (PHMSA TQ compilation, current through Amdt. 192-120, 2015)"
+    short_title: "49 CFR Part 192 (2015 compilation)"
+    publisher: PHMSA
+    domain: pipeline_safety
+    doc_type: regulation
+    parser: ecfr_xml
+    path: phmsa/49_192_highlight_8_15.pdf
+    version: "Amdt. 192-120 (2015)"
+    enabled: false
+    superseded_by: ecfr-49-cfr-192

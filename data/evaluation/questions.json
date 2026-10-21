@@ -1,0 +1,836 @@
+{
+  "version": 1,
+  "description": "Gold evaluation set for retrieval and grounded-answer quality.",
+  "corpus": {
+    "ecfr-49-cfr-192": "eCFR 2026-10-05",
+    "ecfr-49-cfr-195": "eCFR 2026-10-05",
+    "phmsa-om-enforcement-guidance-195": "Revision 2017-07-21",
+    "phmsa-oq-faq": "Revised 2022-01-28",
+    "nist-sp-800-82r3": "Revision 3 (September 2023)"
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "We're planning a hydrotest on a new crude line segment. What test pressure and hold time does Part 195 require, and does anything change if we can't visually inspect the whole line for leaks during the test?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.304", "citation": "49 CFR 195.304"}
+      ],
+      "key_facts": [
+        "Test pressure must be held for at least 4 continuous hours",
+        "Pressure must be 125 percent or more of the maximum operating pressure",
+        "If the pipeline is not visually inspected for leakage, an additional 4 continuous hours at 110 percent or more of MOP is required"
+      ],
+      "reference_answer": "Under 49 CFR 195.304, the test pressure must be maintained throughout the tested section for at least 4 continuous hours at 125 percent or more of the maximum operating pressure. If the pipeline is not visually inspected for leakage during the test, it must be held for at least an additional 4 continuous hours at 110 percent or more of the MOP.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q002",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "For a steel gas line operating above 100 psig in a Class 3 location that was installed after July 1, 2020, what factor do I divide the post-construction test pressure by when figuring MAOP? And what's the factor for plastic pipe?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.619", "citation": "49 CFR 192.619(a)"}
+      ],
+      "key_facts": [
+        "For steel pipe in a Class 3 location installed on or after July 1, 2020, the test pressure is divided by 1.5",
+        "For plastic pipe in all locations, the test pressure is divided by a factor of 1.5",
+        "MAOP is the lowest of the criteria in 192.619(a), one of which is the test pressure divided by the factor"
+      ],
+      "reference_answer": "Under 49 CFR 192.619(a)(2)(ii), for steel pipe operated at 100 psi gage or more, the factor for a Class 3 segment installed on or after July 1, 2020 is 1.5 (Table 1 to paragraph (a)(2)(ii)). Under 192.619(a)(2)(i), plastic pipe in all locations uses a factor of 1.5. The resulting pressure is one of the limits, and MAOP is the lowest of the 192.619(a) criteria.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q003",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "How often do we have to inspect surface conditions along our hazardous liquid pipeline right-of-way, and is an aerial flyover an acceptable method?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.412", "citation": "49 CFR 195.412"}
+      ],
+      "key_facts": [
+        "Intervals not exceeding 3 weeks",
+        "At least 26 times each calendar year",
+        "Methods include walking, driving, flying or other appropriate means of traversing the right-of-way"
+      ],
+      "reference_answer": "49 CFR 195.412(a) requires each operator to inspect surface conditions on or adjacent to each pipeline right-of-way at intervals not exceeding 3 weeks, but at least 26 times each calendar year. Flying is an acceptable method; the rule lists walking, driving, flying or other appropriate means of traversing the right-of-way.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q004",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "Once the baseline assessment is done, what's the maximum interval for reassessing liquid line pipe that could affect a high consequence area?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.452", "citation": "49 CFR 195.452(j)"}
+      ],
+      "key_facts": [
+        "Operators must establish five-year intervals for continually assessing line pipe integrity",
+        "The interval may not exceed 68 months",
+        "Intervals are based on the risk the line pipe poses to the high consequence area"
+      ],
+      "reference_answer": "Under 49 CFR 195.452(j)(3), an operator must establish five-year intervals, not to exceed 68 months, for continually assessing the line pipe's integrity, basing the intervals on the risk the pipe poses to the high consequence area, the paragraph (e) risk factors, the last assessment results, and the information analysis.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q005",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "Our ILI run on an HCA segment of a liquids line found a dent on the top of the pipe at about 7% of nominal diameter. Is that an immediate repair condition, and what do we have to do with operating pressure until it's fixed?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.452", "citation": "49 CFR 195.452(h)"}
+      ],
+      "key_facts": [
+        "A dent on the top of the pipeline (above the 4 and 8 o'clock positions) with depth greater than 6% of nominal pipe diameter is an immediate repair condition",
+        "The operator must temporarily reduce operating pressure or shut down the pipeline until the repair is completed",
+        "If no suitable remaining strength calculation method can be identified, a minimum 20 percent operating pressure reduction based on actual operating pressure for two months prior to the inspection is required"
+      ],
+      "reference_answer": "Yes. Under 49 CFR 195.452(h)(4)(i), a dent on the top of the pipeline (above the 4 and 8 o'clock positions) with a depth greater than 6% of the nominal pipe diameter is an immediate repair condition. The operator must temporarily reduce operating pressure or shut down the line until the repair is complete; if no suitable remaining strength method can be identified, it must implement a minimum 20 percent pressure reduction based on actual operating pressure for the two months before the inspection.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q006",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "How often do mainline valves on a hazardous liquid line need to be inspected, and do we have to stroke rupture-mitigation valves fully closed when we do it?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.420", "citation": "49 CFR 195.420(a)–(d)"}
+      ],
+      "key_facts": [
+        "Mainline valves must be inspected at least twice each calendar year at intervals not exceeding 7 1/2 months",
+        "RMVs must also be partially operated",
+        "Full closure is not required; a minimum 25 percent valve closure is sufficient unless operational information requires more"
+      ],
+      "reference_answer": "Under 49 CFR 195.420(b), each mainline valve must be inspected at least twice each calendar year, at intervals not exceeding 7 1/2 months, to confirm it functions properly. Each RMV must also be partially operated, but full closure is not required: a minimum 25 percent closure is sufficient unless the operator has operational information requiring a greater closure percentage.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q007",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "We run an unodorized gas transmission line through a Class 3 area. What leakage survey frequency applies there, and how does it change in a Class 4 location?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.706", "citation": "49 CFR 192.706"}
+      ],
+      "key_facts": [
+        "Unodorized transmission lines require leakage surveys using leak detector equipment",
+        "Class 3: intervals not exceeding 7 1/2 months, but at least twice each calendar year",
+        "Class 4: intervals not exceeding 4 1/2 months, but at least four times each calendar year",
+        "The general transmission line interval is not exceeding 15 months, but at least once each calendar year"
+      ],
+      "reference_answer": "Per 49 CFR 192.706, transmission line leakage surveys are normally required at intervals not exceeding 15 months, at least once each calendar year. For a line transporting gas without an odor or odorant, surveys using leak detector equipment must be done in Class 3 locations at intervals not exceeding 7 1/2 months (at least twice each calendar year) and in Class 4 locations at intervals not exceeding 4 1/2 months (at least four times each calendar year).",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q008",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "How long do we have to keep OQ records for a gas technician who's no longer performing covered tasks, and what do the qualification records need to show?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.807", "citation": "49 CFR 192.807"}
+      ],
+      "key_facts": [
+        "Records of individuals no longer performing covered tasks must be retained for five years",
+        "Records supporting current qualification are kept while the individual performs the covered task",
+        "Qualification records include identification of the individual, the covered tasks, date(s) of current qualification, and qualification method(s)"
+      ],
+      "reference_answer": "Under 49 CFR 192.807(b), records of prior qualification and of individuals no longer performing covered tasks must be retained for five years, while records supporting current qualification are kept as long as the individual performs the task. Per 192.807(a), qualification records must identify the qualified individual(s), the covered tasks they are qualified for, the date(s) of current qualification, and the qualification method(s).",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q009",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "Which specific types of emergencies does our gas emergency plan have to provide a prompt and effective response to?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.615", "citation": "49 CFR 192.615(a)"}
+      ],
+      "key_facts": [
+        "Gas detected inside or near a building",
+        "Fire located near or directly involving a pipeline facility",
+        "Explosion occurring near or directly involving a pipeline facility",
+        "Natural disaster"
+      ],
+      "reference_answer": "49 CFR 192.615(a)(3) requires the emergency procedures to provide for prompt and effective response to each type of emergency, including gas detected inside or near a building, fire located near or directly involving a pipeline facility, an explosion occurring near or directly involving a pipeline facility, and natural disaster.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q010",
+      "category": "regulation_lookup",
+      "domain": "pipeline_safety",
+      "question": "What's the required inspection and test frequency for pressure regulating stations and relief devices on a gas system, and what is the inspection supposed to confirm?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.739", "citation": "49 CFR 192.739"}
+      ],
+      "key_facts": [
+        "Intervals not exceeding 15 months, but at least once each calendar year",
+        "Applies to pressure limiting stations, relief devices (except rupture discs), and pressure regulating stations",
+        "Must confirm good mechanical condition, adequate capacity and reliability, correct set pressure, and proper installation and protection from dirt, liquids, or other conditions"
+      ],
+      "reference_answer": "Under 49 CFR 192.739(a), each pressure limiting station, relief device (except rupture discs), and pressure regulating station must be inspected and tested at intervals not exceeding 15 months, but at least once each calendar year. The inspection confirms the equipment is in good mechanical condition, adequate in capacity and reliability, set to control or relieve at the correct pressure, and properly installed and protected from dirt, liquids, or other conditions that might prevent proper operation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q011",
+      "category": "definition",
+      "domain": "pipeline_safety",
+      "question": "What makes a hazardous liquid an HVL under Part 195?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.2/def/highly-volatile-liquid-or-hvl", "citation": "49 CFR 195.2"}
+      ],
+      "key_facts": [
+        "An HVL is a hazardous liquid which will form a vapor cloud when released to the atmosphere",
+        "Vapor pressure exceeding 276 kPa (40 psia) at 37.8 °C (100 °F)"
+      ],
+      "reference_answer": "Under 49 CFR 195.2, a highly volatile liquid (HVL) is a hazardous liquid that will form a vapor cloud when released to the atmosphere and has a vapor pressure exceeding 276 kPa (40 psia) at 37.8 °C (100 °F).",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q012",
+      "category": "definition",
+      "domain": "pipeline_safety",
+      "question": "When does a gas pipeline count as a transmission line under Part 192 rather than a distribution or gathering line?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.3/def/transmission-line", "citation": "49 CFR 192.3"}
+      ],
+      "key_facts": [
+        "A transmission line is a pipeline other than a gathering line",
+        "Transports gas from a gathering pipeline or storage facility to a distribution center, storage facility, or large volume customer not downstream from a distribution center",
+        "Has an MAOP of 20 percent or more of SMYS",
+        "Transports gas within a storage field, or is voluntarily designated by the operator as a transmission pipeline"
+      ],
+      "reference_answer": "Under 49 CFR 192.3, a transmission line is a pipeline, other than a gathering line, that (1) transports gas from a gathering pipeline or storage facility to a distribution center, storage facility, or large volume customer not downstream from a distribution center; (2) has an MAOP of 20 percent or more of SMYS; (3) transports gas within a storage field; or (4) is voluntarily designated by the operator as a transmission pipeline.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q013",
+      "category": "definition",
+      "domain": "pipeline_safety",
+      "question": "For liquid pipeline integrity management, what population thresholds make an area a 'high population area' HCA?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.450/def/high-consequence-area", "citation": "49 CFR 195.450"}
+      ],
+      "key_facts": [
+        "A high population area is an urbanized area as defined and delineated by the Census Bureau",
+        "Contains 50,000 or more people",
+        "Has a population density of at least 1,000 people per square mile",
+        "HCAs also include commercially navigable waterways, other populated areas, and unusually sensitive areas"
+      ],
+      "reference_answer": "Under 49 CFR 195.450, a high population area is an urbanized area, as defined and delineated by the Census Bureau, that contains 50,000 or more people and has a population density of at least 1,000 people per square mile. The HCA definition also covers commercially navigable waterways, other populated areas, and unusually sensitive areas.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q014",
+      "category": "definition",
+      "domain": "pipeline_safety",
+      "question": "What exactly is a moderate consequence area in Part 192?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.3/def/moderate-consequence-area", "citation": "49 CFR 192.3"}
+      ],
+      "key_facts": [
+        "An onshore area within a potential impact circle as defined in 192.903",
+        "Contains five or more buildings intended for human occupancy, or any portion of the paved surface (including shoulders) of a designated interstate, other freeway, expressway, or principal arterial roadway with 4 or more lanes",
+        "Does not meet the definition of a high consequence area"
+      ],
+      "reference_answer": "Under 49 CFR 192.3, a moderate consequence area is an onshore area within a potential impact circle (as defined in 192.903) containing either five or more buildings intended for human occupancy, or any portion of the paved surface, including shoulders, of a designated interstate, other freeway, expressway, or other principal arterial roadway with 4 or more lanes, and that does not meet the definition of a high consequence area.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q015",
+      "category": "definition",
+      "domain": "ot_security",
+      "question": "How does NIST SP 800-82 define a data diode, and what other names does it go by?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "glossary/data-diode", "citation": "NIST SP 800-82r3, Appendix B (Glossary) - \"data diode\""}
+      ],
+      "key_facts": [
+        "A network appliance or device that allows data to travel only in one direction",
+        "Also referred to as a unidirectional gateway, deterministic one-way boundary device, or unidirectional network"
+      ],
+      "reference_answer": "The NIST SP 800-82r3 glossary (Appendix B) defines a data diode as a network appliance or device that allows data to travel only in one direction. It is also referred to as a unidirectional gateway, deterministic one-way boundary device, or unidirectional network.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q016",
+      "category": "enforcement_guidance",
+      "domain": "pipeline_safety",
+      "question": "If a PHMSA inspector finds we didn't do something the O&M enforcement guidance describes, can the enforcement action say we 'violated the guidance'?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "intro", "citation": "PHMSA O&M Enforcement Guidance (Part 195), introduction"}
+      ],
+      "key_facts": [
+        "The guidance is not a regulation and creates no new legal obligations; the regulation is controlling",
+        "An allegation must be based on failure to take a required action (or taking a prohibited action) set forth directly in the regulation",
+        "An allegation should never be drafted to say the operator violated the guidance"
+      ],
+      "reference_answer": "No. The introduction to PHMSA's O&M Enforcement Guidance for Part 195 Subpart F states the document is not a regulation, creates no new legal obligations, and the regulation is controlling. Any allegation of a probable violation must be based on failure to take a required action (or taking a prohibited action) set forth directly in the regulation, and should never be drafted to say the operator 'violated the guidance.'",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q017",
+      "category": "enforcement_guidance",
+      "domain": "pipeline_safety",
+      "question": "When PHMSA reviews our emergency response training program on a liquids system, what kinds of findings get written up as probable violations?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.403/violations", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.403 - Examples of probable violations or inadequate procedures"}
+      ],
+      "key_facts": [
+        "No written, continuing training program established, or training procedures not followed",
+        "No or insufficient documentation that personnel were trained per 195.403(a)",
+        "No documentation that the review with personnel is performed at the prescribed frequency, or appropriate changes not made",
+        "No requirement or documentation that supervisors maintain thorough knowledge of the procedures",
+        "Contractors not trained on the emergency plan when performing an activity where an emergency might occur"
+      ],
+      "reference_answer": "The O&M Enforcement Guidance for § 195.403 lists examples such as: no written, continuing training program; training procedures not followed; no or insufficient documentation of training per § 195.403(a); no documentation that the personnel review is done at the prescribed frequency; appropriate program changes not made; no requirement or documentation that supervisors maintain thorough knowledge; and contractors not trained on the emergency plan. Lack of procedures is cited under 195.402 and lack of records under 195.404, and some items may be handled as inadequate procedures through a Notice of Amendment rather than a Notice of Probable Violation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q018",
+      "category": "enforcement_guidance",
+      "domain": "pipeline_safety",
+      "question": "We patrol our liquid line by air, but some stretches of ROW are under heavy tree canopy. How does PHMSA's enforcement guidance treat that?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.412/guidance", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.412 - Guidance information"},
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.412/violations", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.412 - Examples of probable violations or inadequate procedures"}
+      ],
+      "key_facts": [
+        "ROW conditions must be maintained at a level appropriate for the type of patrol chosen",
+        "If excessive vegetation covers the ROW, the operator shall drive or walk those areas until the ROW is cleared",
+        "Surface conditions cannot be inspected by aerial patrolling if obstructed by an overhanging tree canopy (Texas Eastern final order)",
+        "Tree canopy and vegetation overgrowth not adequately trimmed for aerial patrols is listed as a probable violation"
+      ],
+      "reference_answer": "The § 195.412 guidance says ROW conditions must be maintained at a level appropriate for the patrol type, and if excessive vegetation covers the ROW the operator shall drive or walk those areas until it is cleared; the Texas Eastern final order notes that surface conditions cannot be inspected by aerial patrol where obstructed by tree canopy. The guidance lists 'for aerial patrols, tree canopy and vegetation overgrowth not adequately trimmed, inhibited the ability to evaluate surface conditions' as an example of a probable violation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q019",
+      "category": "enforcement_guidance",
+      "domain": "pipeline_safety",
+      "question": "A creek our liquids line crosses is treated as navigable for Oil Pollution Act purposes. Does that automatically mean the 195.412(b) underwater crossing inspection applies to it?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.412/interpretation/PI-95-0103", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.412 - Interpretation PI-95-0103 (12-19-1995)"}
+      ],
+      "key_facts": [
+        "Under the Oil Pollution Act, navigable waterways include waters used for commercial navigation and waters that unite with or feed into them",
+        "Under the Pipeline Safety Acts, navigable waters are waters that are in fact used for commercial navigation",
+        "A waterway can be navigable under Part 194 but not under Part 195",
+        "If no crossing meets the Part 195 criteria (33 CFR Subpart 2.05), 195.412(b) would not apply"
+      ],
+      "reference_answer": "No. Interpretation PI-95-0103 (1995), included in the § 195.412 enforcement guidance, explains that the OPA definition is broad (waters used for commercial navigation plus waters that unite with or feed into them), while under the Pipeline Safety Acts navigable waters are only those in fact used for commercial navigation. A waterway can therefore be navigable under Part 194 but not Part 195, and if the crossing does not meet the Part 195 criteria, § 195.412(b) would not apply.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q020",
+      "category": "enforcement_guidance",
+      "domain": "pipeline_safety",
+      "question": "What do PHMSA inspectors expect our valve inspection and maintenance records to show, and what valve-related findings typically get flagged as probable violations?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.420/violations", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.420 - Examples of probable violations or inadequate procedures"}
+      ],
+      "key_facts": [
+        "Records must be specific enough to show who did the inspection and maintenance, what was inspected, what maintenance was performed, and what was found",
+        "Failing to identify mainline valves or other valves necessary for safe operation",
+        "Mainline valve inspections not performed at the minimum required intervals",
+        "Valves not protected from unauthorized operation and vandalism",
+        "A valve necessary for safe operation observed to be inoperative, regardless of the pipeline's operating status (CPF 3-2006-5027)"
+      ],
+      "reference_answer": "The § 195.420 enforcement guidance flags records lacking the specificity to show who did the inspection and maintenance, what was inspected, what maintenance was performed, and what was found. Other listed probable violations include not identifying mainline or other safety-necessary valves, not keeping them in good working order, missing the minimum inspection intervals, not protecting valves from unauthorized operation and vandalism, not following procedures, and a necessary valve observed inoperative regardless of the pipeline's operating status (CPF 3-2006-5027).",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q021",
+      "category": "faq",
+      "domain": "pipeline_safety",
+      "question": "Does the contractor we hire for covered tasks need its own written OQ program?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-2", "citation": "PHMSA OQ FAQs, Q2"}
+      ],
+      "key_facts": [
+        "No, contractors are not required to have a written OQ program",
+        "The operator must ensure any individual performing covered tasks meets the requirements of the operator's OQ program",
+        "If a contractor has its own program, the operator must verify it meets the requirements of the operator's OQ program"
+      ],
+      "reference_answer": "No. PHMSA OQ FAQ Q2 states the operator must ensure that anyone performing covered tasks on its system, whether contractor or operator personnel, meets the requirements of the operator's OQ program. If a contractor has its own written program, the operator must verify that it meets the requirements of the operator's program.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q022",
+      "category": "faq",
+      "domain": "pipeline_safety",
+      "question": "Do our qualified field techs have to carry OQ cards listing the covered tasks they're qualified for?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-22", "citation": "PHMSA OQ FAQs, Q22"}
+      ],
+      "key_facts": [
+        "No, qualified individuals are not required to carry cards",
+        "The operator is responsible for maintaining a record of the current qualification status of individuals performing covered tasks"
+      ],
+      "reference_answer": "No. According to PHMSA OQ FAQ Q22, qualified individuals are not required to carry cards; the operator is responsible for maintaining a record of the current qualification status for individuals performing covered tasks.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q023",
+      "category": "faq",
+      "domain": "pipeline_safety",
+      "question": "Do local firefighters who might shut a manual valve for us during an emergency need to be qualified under our OQ program?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-12", "citation": "PHMSA OQ FAQs, Q12"}
+      ],
+      "key_facts": [
+        "Any emergency responder who could reasonably be expected to perform manual valve closures or other covered tasks must be qualified under the operator's OQ program",
+        "Responders acting on behalf of the operator as an extension of its workforce must be qualified",
+        "Responders need not be qualified to act on their own accord, consistent with their job responsibilities, to protect public safety"
+      ],
+      "reference_answer": "Yes, if they could reasonably be expected to do so. PHMSA OQ FAQ Q12 says any emergency responder who could reasonably be expected to perform manual valve closures or other covered tasks, or who acts on the operator's behalf as an extension of its workforce, must be qualified under the operator's OQ program. Responders acting on their own accord, consistent with their job responsibilities to protect public safety, need not be qualified by the operator.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q024",
+      "category": "faq",
+      "domain": "pipeline_safety",
+      "question": "How should we decide reevaluation intervals for covered tasks, especially for something we rarely do like hot tapping?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-34", "citation": "PHMSA OQ FAQs, Q34"}
+      ],
+      "key_facts": [
+        "Intervals may be affected by task difficulty or complexity, task importance or safety sensitivity, and how frequently the task is performed",
+        "Operators may consider consensus standards, industry practice, operating history, and operational characteristics of their facilities",
+        "For infrequently performed tasks such as hot tapping, an operator may evaluate and qualify individuals immediately before the task is performed"
+      ],
+      "reference_answer": "PHMSA OQ FAQ Q34 says reevaluation intervals may depend on task difficulty or complexity, importance or safety sensitivity, and how often the task is performed, and operators may consider consensus standards, industry practice, their operating history, and their facilities' operational characteristics. For infrequent tasks like hot tapping, an operator may choose to evaluate and qualify individuals immediately before the task is performed.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q025",
+      "category": "faq",
+      "domain": "pipeline_safety",
+      "question": "Does our crew foreman need to be qualified on every covered task his crew performs?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-40", "citation": "PHMSA OQ FAQs, Q40"}
+      ],
+      "key_facts": [
+        "The regulations do not require a supervisor or foreperson to be qualified for covered tasks carried out under their supervision",
+        "The supervisor must be qualified if he or she performs the tasks",
+        "The supervisor must be qualified if he or she is the individual assigned to direct and observe an unqualified person performing the task"
+      ],
+      "reference_answer": "Not necessarily. PHMSA OQ FAQ Q40 says the regulations do not require a supervisor or foreperson to be qualified for the covered tasks carried out under their supervision, but they must be qualified if they perform the tasks themselves or are the individual assigned to direct and observe an unqualified person performing the task.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q026",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "Our IT team wants to apply their usual playbook to the control system: reboot boxes when they misbehave and push patches fast. What does NIST say makes OT different?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "2.4", "citation": "NIST SP 800-82r3, Section 2.4 (Comparing OT and IT System Security)"}
+      ],
+      "key_facts": [
+        "Many OT processes are continuous; typical IT strategies such as rebooting a component are usually not acceptable",
+        "Outages must often be planned and scheduled days or weeks in advance",
+        "Software updates must be thoroughly tested by both the vendor and the end user before implementation",
+        "For OT, human safety is paramount and any security measure that impairs safety is unacceptable",
+        "OT component lifetime is often on the order of 10 to 15 years versus three to five years for IT"
+      ],
+      "reference_answer": "NIST SP 800-82r3 Section 2.4 explains that many OT processes are continuous, so typical IT strategies like rebooting are usually not acceptable and outages must be planned days or weeks in advance. OT updates cannot always be applied promptly and must be thoroughly tested by both the vendor and end user, sometimes with revalidation. OT priorities put human safety first (any security measure that impairs safety is unacceptable), and OT components often last 10 to 15 years versus three to five for IT.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q027",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "We have HMIs running on an unsupported OS that we can't patch. What does NIST SP 800-82 suggest we do instead?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "5.2.5.2", "citation": "NIST SP 800-82r3, Section 5.2.5.2 (Patching)"}
+      ],
+      "key_facts": [
+        "Consider updating the OS or investing in additional controls to protect against exploitation of known vulnerabilities",
+        "Tools such as web application firewalls (WAF) and IPS can detect or prevent attacks against unpatched vulnerabilities",
+        "Bump-in-the-wire security devices can be installed in line with devices that cannot be updated",
+        "Test patches on a sandbox system and apply them in scheduled maintenance windows with a recovery plan"
+      ],
+      "reference_answer": "NIST SP 800-82r3 Section 5.2.5.2 says that when older components on unsupported OSs cannot be patched, organizations may consider updating the OS or investing in additional controls. WAFs and IPS can be configured to detect or prevent attacks on unpatched vulnerabilities, and bump-in-the-wire devices can be installed in line with devices that cannot be updated. When patching is possible, patches should be tested in a sandbox and applied during scheduled maintenance windows with a recovery plan.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q028",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "Why does NIST care so much about time synchronization in OT, and how should we protect our time sources from spoofing?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "6.2.12", "citation": "NIST SP 800-82r3, Section 6.2.12 (Time Synchronization)"}
+      ],
+      "key_facts": [
+        "Synchronized clocks are critical for cyber event correlation and other OT functions such as motion control",
+        "A common time should be used across all OT devices, and multiple time sources reduce clock error and provide backup",
+        "Authenticated NTP and secure PTP (PTP with an authentication TLV) can be used where there is risk of malicious modification",
+        "Non-authenticated NTP is susceptible to spoofing and should be located behind the firewall",
+        "Time sources should be included in monitoring, with their logs forwarded to a log collection system"
+      ],
+      "reference_answer": "NIST SP 800-82r3 Section 6.2.12 says synchronized clocks are critical for cyber event correlation and OT functions such as motion control, because an inaccurate clock makes event and log timestamps inaccurate. It recommends a common time across all OT devices, multiple time sources for backup, and authenticated NTP or secure PTP (with an authentication TLV) where malicious modification is a risk. Non-authenticated NTP should sit behind the firewall, and time sources should be monitored with their logs forwarded to a log collection system.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q029",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "A vendor needs temporary remote access to troubleshoot one of our PLCs. What precautions does NIST SP 800-82 recommend for that kind of session?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "6.2.10", "citation": "NIST SP 800-82r3, Section 6.2.10 (Remote Access)"}
+      ],
+      "key_facts": [
+        "Remote access should be provided only if justified, limited to the business need, and should not circumvent safety or security controls",
+        "Multi-factor authentication should be considered for remote access to the OT system",
+        "Use unique usernames and complex passwords and remove, disable, or modify default credentials",
+        "Remove access when no longer required (e.g., automatic timers) and monitor remote activities",
+        "Make operations aware of planned remote activity, initiate the connection from the OT environment, and label remote connection devices for quick disconnection"
+      ],
+      "reference_answer": "NIST SP 800-82r3 Section 6.2.10 says remote access should be granted only if justified, limited to the business need, and must not circumvent safety or security controls; MFA should be considered. For temporary vendor access it recommends unique usernames and complex passwords, removing default credentials, updating software and firmware, removing access when no longer needed (e.g., with automatic timers), monitoring remote activity, informing operations personnel, initiating the connection from the OT environment, and labeling remote connection devices so operations can disconnect quickly.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q030",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "What does NIST recommend for handling default passwords on OT gear, and what if an industrial protocol only sends passwords in cleartext?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "6.2.1.4.5", "citation": "NIST SP 800-82r3, Section 6.2.1.4.5 (Password Authentication)"}
+      ],
+      "key_facts": [
+        "Change all default passwords in OT components",
+        "Many OT systems lack password recovery mechanisms, so changed passwords must be securely available to those who need to know (e.g., a secure password management tool)",
+        "Where plaintext transmission cannot be avoided, users should have different and unrelated passwords for encrypted and non-encrypted protocols",
+        "Passwords should not be sent across a network unless protected by FIPS-approved encryption or a salted cryptographic hash designed to prevent replay attacks"
+      ],
+      "reference_answer": "NIST SP 800-82r3 Section 6.2.1.4.5 recommends changing all default passwords on OT components and, because many OT systems have no password recovery, making the new passwords securely available to those who need to know, for example through a secure password management tool. Where a protocol transmits passwords in plaintext and this cannot be avoided, users should have different, unrelated passwords for encrypted and non-encrypted protocols, and passwords should not cross a network unless protected by FIPS-approved encryption or a salted hash designed to prevent replay attacks.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q031",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "Is it a security concern if our safety instrumented system shares components or a network with the basic process control system?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "4.2.2", "citation": "NIST SP 800-82r3, Section 4.2.2 (Safety Systems)"}
+      ],
+      "key_facts": [
+        "Safety systems are traditionally fully redundant and independent from the primary OT",
+        "Combining control and safety functions, components, or networks could give a sophisticated attacker access to both if the OT is compromised",
+        "Organizations should ensure adequate separation of components consistent with the risk of compromise",
+        "Organizations should evaluate whether implemented security controls negatively impact the safety system"
+      ],
+      "reference_answer": "Yes. NIST SP 800-82r3 Section 4.2.2 notes that safety systems are traditionally fully redundant and independent of the primary OT, and that architectures combining control and safety functions, components, or networks could let a sophisticated attacker reach both if the OT were compromised. Organizations should ensure adequate separation consistent with the risk of compromise and check that the security controls they implement do not negatively impact the safety system.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q032",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "What does the OT overlay add to AC-17 remote access, and what compensating controls does it suggest if we can't do automated monitoring of remote sessions?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "F.7.1/AC-17", "citation": "NIST SP 800-82r3, Appendix F.7.1 (ACCESS CONTROL – AC), AC-17 (Remote Access)"}
+      ],
+      "key_facts": [
+        "The overlay adds AC-17(9) Disconnect or Disable Access and AC-17(10) Authenticate Remote Commands",
+        "For AC-17(1), compensating controls include nonautomated mechanisms or procedures, limiting remote access to a specified period of time, or placing a call from the OT site to the authenticated remote entity",
+        "Remote access disconnect should not impact OT operations and OT personnel should be trained to use it",
+        "Encryption-based technologies (e.g., added VPN devices) should support confidentiality and integrity of remote sessions"
+      ],
+      "reference_answer": "In NIST SP 800-82r3 Appendix F, the overlay adds AC-17(9), Disconnect or Disable Access (rationale: the ability to cut remote access is critical as more OT becomes remotely accessible), and AC-17(10), Authenticate Remote Commands. For AC-17(1), compensating controls include nonautomated mechanisms such as limiting remote access to a specified time period or placing a call from the OT site to the authenticated remote entity. The OT discussion also says the disconnect should not impact OT operations and personnel should be trained on it, and devices such as VPNs can add encryption where OT devices lack it.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q033",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "Our operators stay logged into the HMIs 24/7, so account lockout after failed logins would be risky. How does the OT overlay handle the unsuccessful logon attempts control?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "F.7.1/AC-7", "citation": "NIST SP 800-82r3, Appendix F.7.1 (ACCESS CONTROL – AC), AC-7 (Unsuccessful Logon Attempts)"}
+      ],
+      "key_facts": [
+        "Many OT systems remain in continuous operation with operators logged on at all times; a 'log-over' capability may be employed",
+        "Compensating controls include logging all unsuccessful logon attempts and alerting OT security personnel when the organization-defined number of consecutive invalid attempts is exceeded",
+        "Unsuccessful logon attempt limits are enforced for accounts (e.g., administrator) or systems (e.g., engineering workstations) not required for continuous operation"
+      ],
+      "reference_answer": "The AC-7 OT discussion in NIST SP 800-82r3 Appendix F notes that many OT systems run continuously with operators always logged on, and a 'log-over' capability may be used. Compensating controls include logging all unsuccessful logon attempts and alerting OT security personnel when the organization-defined number of consecutive invalid attempts is exceeded. Lockout limits are enforced only for accounts (e.g., administrator) or systems (e.g., engineering workstations) not required for continuous operation.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q034",
+      "category": "ot_security",
+      "domain": "ot_security",
+      "question": "Under the OT overlay's boundary protection control, what's the guidance on connecting an OT system directly to a public network, and on fail-secure behavior at the boundary?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "F.7.17/SC-7", "citation": "NIST SP 800-82r3, Appendix F.7.17 (SYSTEM AND COMMUNICATIONS PROTECTION – SC), SC-7 (Boundary Protection)"}
+      ],
+      "key_facts": [
+        "SC-7(28) Connections to Public Networks is added to the LOW, MOD, and HIGH baselines",
+        "A direct connection from OT to a public network has limited applicability in OT but significant potential risk; access should be restricted to individuals required for operation",
+        "Organizations consider the need, benefits, additional threat vectors, and potential adverse impacts of each public network connection",
+        "For SC-7(18) Fail Secure, the organization selects an appropriate failure mode (e.g., permit or block all communications); it is added to the MOD baseline"
+      ],
+      "reference_answer": "In NIST SP 800-82r3 Appendix F, SC-7(28) Connections to Public Networks is added to the LOW, MOD, and HIGH baselines because a direct OT-to-public-network connection has limited applicability but significant potential risk; organizations should weigh the need, benefits, added threat vectors, and adverse impacts of each such connection. For SC-7(18) Fail Secure, added to the MOD baseline, the organization selects an appropriate failure mode (e.g., permit or block all communications), since choosing the failure mode for the physical part of OT can significantly influence the impact of a failure.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q035",
+      "category": "cross_document",
+      "domain": "pipeline_safety",
+      "question": "Can our qualified lead tech have a few unqualified helpers perform a covered task on a gas main, and is there a cap on how many helpers one qualified person can oversee?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.805", "citation": "49 CFR 192.805"},
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-26", "citation": "PHMSA OQ FAQs, Q26"}
+      ],
+      "key_facts": [
+        "192.805(c) allows individuals who are not qualified to perform a covered task if directed and observed by a qualified individual",
+        "The regulation does not set a maximum number; the operator should determine the appropriate number, which may vary by covered task",
+        "Operators should consider physical space limitations and environmental conditions such as noise, visual obstructions, and weather"
+      ],
+      "reference_answer": "Yes. 49 CFR 192.805(c) requires the OQ program to allow unqualified individuals to perform a covered task if directed and observed by a qualified individual. No fixed cap is set; PHMSA OQ FAQ Q26 says the operator should determine the appropriate number, which may vary by covered task, considering physical space limits and environmental conditions such as noise, visual obstructions, and weather.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q036",
+      "category": "cross_document",
+      "domain": "pipeline_safety",
+      "question": "Does the navigable waterway crossing inspection interval apply to our directionally bored river crossings too? What does the current rule say and how has PHMSA interpreted it?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.412", "citation": "49 CFR 195.412"},
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.412/guidance", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.412 - Guidance information"}
+      ],
+      "key_facts": [
+        "195.412(b): except for offshore pipelines, each crossing under a navigable waterway must be inspected at intervals not exceeding 5 years",
+        "The guidance says that, absent a recognized standard for bored (or drilled) crossings, the 5-year inspection interval applies to bored crossings",
+        "The initial depth of the crossing is a factor in choosing inspection methods and how rigorously to inspect",
+        "A Corps of Engineers or other agency bottom profile may be acceptable if it covers the crossing bank to bank and is within the 5-year time frame"
+      ],
+      "reference_answer": "Yes. 49 CFR 195.412(b) requires each crossing under a navigable waterway (except offshore pipelines) to be inspected at intervals not exceeding 5 years. The § 195.412 enforcement guidance, citing the 05-17-02 waiver, says that absent a recognized standard for bored crossings the 5-year interval applies to them, with initial depth a factor in choosing inspection methods; a Corps of Engineers or other agency bottom profile may be acceptable if it covers the crossing bank to bank and is within the 5-year window.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q037",
+      "category": "cross_document",
+      "domain": "pipeline_safety",
+      "question": "On our liquids system, how often do we have to review emergency response training performance with personnel, and do our contractors need to be trained on our emergency plan?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.403", "citation": "49 CFR 195.403"},
+        {"document_id": "phmsa-om-enforcement-guidance-195", "section_key": "195.403/guidance", "citation": "PHMSA O&M Enforcement Guidance (Part 195), § 195.403 - Guidance information"}
+      ],
+      "key_facts": [
+        "195.403(b): at intervals not exceeding 15 months, but at least once each calendar year, review personnel performance against training objectives and make appropriate program changes",
+        "Guidance: emergency training programs include initial training with annual (not to exceed 15 months) individual refresher training",
+        "Guidance: contractor personnel shall be trained on the operator's emergency response plan when performing an activity where an emergency might occur"
+      ],
+      "reference_answer": "49 CFR 195.403(b) requires the operator, at intervals not exceeding 15 months but at least once each calendar year, to review personnel performance against the emergency response training objectives and make needed changes to the program. PHMSA's § 195.403 enforcement guidance adds that programs should include initial training with annual (not to exceed 15 months) refresher training, and that contractor personnel shall be trained on the operator's emergency response plan when performing an activity where an emergency might occur.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q038",
+      "category": "cross_document",
+      "domain": "pipeline_safety",
+      "question": "Can we qualify a gas technician for a covered task just by reviewing his work performance history? What about qualifying him only by watching him do the job?",
+      "conversation": [],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.809", "citation": "49 CFR 192.809"},
+        {"document_id": "phmsa-oq-faq", "section_key": "faq-28", "citation": "PHMSA OQ FAQs, Q28"}
+      ],
+      "key_facts": [
+        "After October 28, 2002, work performance history may not be used as a sole evaluation method",
+        "Work performance history review may be used in conjunction with other permissible evaluation methods",
+        "After December 16, 2004, observation of on-the-job performance may not be used as the sole method of evaluation"
+      ],
+      "reference_answer": "No to both. Under 49 CFR 192.809(d), work performance history may not be used as a sole evaluation method after October 28, 2002, and PHMSA OQ FAQ Q28 confirms it can be used only together with other permissible methods. Under 192.809(e), observation of on-the-job performance may not be used as the sole method of evaluation after December 16, 2004.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q039",
+      "category": "unanswerable",
+      "domain": "pipeline_safety",
+      "question": "What thermal radiation exclusion zone distances does 49 CFR Part 193 require around an LNG storage tank?",
+      "conversation": [],
+      "answerable": false,
+      "expected_sources": [],
+      "key_facts": [],
+      "reference_answer": "The knowledge base does not include 49 CFR Part 193 (LNG facilities), so it cannot answer questions about LNG siting or thermal exclusion zones. It covers Part 192 (gas pipelines) and Part 195 (hazardous liquid pipelines), plus PHMSA O&M and OQ guidance.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q040",
+      "category": "unanswerable",
+      "domain": "pipeline_safety",
+      "question": "How often does the California State Fire Marshal require hydrostatic retesting of intrastate hazardous liquid pipelines?",
+      "conversation": [],
+      "answerable": false,
+      "expected_sources": [],
+      "key_facts": [],
+      "reference_answer": "The knowledge base does not contain California State Fire Marshal requirements or any other state-specific pipeline rules. It covers only the federal Part 195 requirements (for example, the pressure test requirements in Subpart E, such as § 195.304), which may differ from state rules.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q041",
+      "category": "unanswerable",
+      "domain": "pipeline_safety",
+      "question": "How often does a process hazard analysis have to be revalidated under OSHA's process safety management standard, 29 CFR 1910.119?",
+      "conversation": [],
+      "answerable": false,
+      "expected_sources": [],
+      "key_facts": [],
+      "reference_answer": "The knowledge base does not include OSHA's process safety management standard (29 CFR 1910.119), so it cannot state the PHA revalidation interval. The closest material is NIST SP 800-82r3's suggestion to include cyber attack scenarios in process hazard analyses, which says nothing about OSHA revalidation requirements.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q042",
+      "category": "unanswerable",
+      "domain": "ot_security",
+      "question": "What minimum password length does NIST SP 800-63B require for memorized secrets on our OT engineering workstations?",
+      "conversation": [],
+      "answerable": false,
+      "expected_sources": [],
+      "key_facts": [],
+      "reference_answer": "The knowledge base does not contain NIST SP 800-63B, so it cannot state that document's memorized-secret length requirements. SP 800-82r3 only lists 800-63B as a supplemental reference, and its password guidance (Section 6.2.1.4.5) calls for appropriate length, strength, and complexity without giving a numeric minimum.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q043",
+      "category": "follow_up",
+      "domain": "pipeline_safety",
+      "question": "What about for gas transmission lines?",
+      "conversation": [
+        {"role": "user", "content": "How often do we need to patrol the right-of-way on our crude oil pipeline?"},
+        {"role": "assistant", "content": "Under 49 CFR 195.412(a), you must inspect surface conditions on or adjacent to each pipeline right-of-way at intervals not exceeding 3 weeks, but at least 26 times each calendar year. Walking, driving, flying or other appropriate means of traversing the right-of-way are acceptable."}
+      ],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-192", "section_key": "192.705", "citation": "49 CFR 192.705"}
+      ],
+      "key_facts": [
+        "Patrol frequency depends on line size, operating pressures, class location, terrain, weather, and other relevant factors",
+        "Class 1 and 2: 7 1/2 months (at least twice each calendar year) at highway and railroad crossings; 15 months (at least once each calendar year) at all other places",
+        "Class 3: 4 1/2 months (at least four times each calendar year) at crossings; 7 1/2 months (at least twice each calendar year) elsewhere",
+        "Class 4: 4 1/2 months (at least four times each calendar year) everywhere"
+      ],
+      "reference_answer": "For gas transmission lines, 49 CFR 192.705 sets patrol frequency by line size, operating pressures, class location, terrain, weather, and other factors, subject to maximum intervals. In Class 1 and 2 locations: 7 1/2 months (at least twice a year) at highway and railroad crossings and 15 months (at least once a year) elsewhere. In Class 3: 4 1/2 months (at least four times a year) at crossings and 7 1/2 months (at least twice a year) elsewhere. In Class 4: 4 1/2 months (at least four times a year) everywhere.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q044",
+      "category": "follow_up",
+      "domain": "ot_security",
+      "question": "Is there a matching control in the OT overlay, and what does its OT discussion add?",
+      "conversation": [
+        {"role": "user", "content": "What does NIST SP 800-82 recommend when we can't patch older OT components?"},
+        {"role": "assistant", "content": "NIST SP 800-82r3 Section 5.2.5.2 notes that patching OT components on unsupported OSs may not be an option. In that case organizations may consider updating the OS or adding controls such as web application firewalls, IPS, or bump-in-the-wire devices to protect against exploitation of known vulnerabilities. Where patches can be applied, they should be tested in a sandbox and deployed in scheduled maintenance windows with a recovery plan."}
+      ],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "nist-sp-800-82r3", "section_key": "F.7.18/SI-2", "citation": "NIST SP 800-82r3, Appendix F.7.18 (SYSTEM AND INFORMATION INTEGRITY – SI), SI-2 (Flaw Remediation)"}
+      ],
+      "key_facts": [
+        "The matching overlay control is SI-2 Flaw Remediation",
+        "Many OT use OSs and software no longer maintained by vendors, and operators may depend on vendors to validate patch operability",
+        "Organizations may have to accept additional risk if no patch is available, validation takes time, or deployment requires an unacceptable shutdown",
+        "Compensating controls include limiting exposure of the vulnerable system, restricting vulnerable services, and virtual patching"
+      ],
+      "reference_answer": "Yes: SI-2 Flaw Remediation in Appendix F of NIST SP 800-82r3. Its OT discussion says patching is complicated because many OT systems run OSs and software no longer maintained by vendors, and operators often depend on vendors to validate patches. Organizations may have to accept additional risk when no patch is available, validation takes time, or deployment needs an unacceptable shutdown, and should then use compensating controls such as limiting exposure, restricting vulnerable services, and virtual patching, plus measures that improve their ability to respond.",
+      "difficulty": "hard"
+    },
+    {
+      "id": "q045",
+      "category": "follow_up",
+      "domain": "pipeline_safety",
+      "question": "How long do we have to keep the record of that test, and what does it need to include?",
+      "conversation": [
+        {"role": "user", "content": "What pressure and duration does Part 195 require for a hydrostatic test of a liquid line?"},
+        {"role": "assistant", "content": "Under 49 CFR 195.304, the test pressure must be maintained for at least 4 continuous hours at 125 percent or more of the maximum operating pressure, plus an additional 4 continuous hours at 110 percent or more of MOP if the pipeline is not visually inspected for leakage during the test."}
+      ],
+      "answerable": true,
+      "expected_sources": [
+        {"document_id": "ecfr-49-cfr-195", "section_key": "195.310", "citation": "49 CFR 195.310"}
+      ],
+      "key_facts": [
+        "The record of the latest test must be retained as long as the facility tested is in use",
+        "Records include pressure recording charts and test instrument calibration data",
+        "Records include the operator name, the person responsible for the test, the test company (if any), the date and time, the minimum test pressure, and the test medium",
+        "Where elevation differences exceed 100 feet (30 meters), a profile showing elevation and test sites is required",
+        "Temperature of the test medium or pipe during the test period must be recorded"
+      ],
+      "reference_answer": "Under 49 CFR 195.310, a record must be made of each pressure test, and the record of the latest test must be retained as long as the tested facility is in use. It must include the pressure recording charts, instrument calibration data, the names of the operator, the person responsible, and any test company, the date and time, the minimum test pressure, the test medium, a description of the facility and test apparatus, an explanation of any pressure discontinuities, an elevation profile where elevation differences exceed 100 feet (30 meters), and the temperature of the test medium or pipe.",
+      "difficulty": "medium"
+    }
+  ]
+}
