@@ -35,5 +35,27 @@ services:
       db:
         condition: service_healthy
 
+  # HTTP API, plus the UI if it has been built (cd frontend && npm run build): docker compose up -d api
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    entrypoint: ["python", "-m", "app.api"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      RAG_DATABASE_URL: postgresql+psycopg://rag:${POSTGRES_PASSWORD:-rag}@db:5432/rag
+      RAG_API_HOST: 0.0.0.0
+      RAG_API_PORT: "8000"
+    ports:
+      - "${RAG_API_HOST_PORT:-8000}:8000"
+    volumes:
+      - ./data:/app/data
+      - ./frontend/dist:/app/frontend/dist:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
 volumes:
   pgdata:

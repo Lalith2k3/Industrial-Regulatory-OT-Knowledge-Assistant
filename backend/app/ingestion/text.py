@@ -67,10 +67,8 @@ def join_lines(lines: Iterable[str], vocab: set[str] | None = None) -> str:
             out = out + line  # identifier wrapped at its hyphen: "Amdt. 195-" + "51"
         elif m and nxt:
             merged = (m.group(1) + nxt.group(1)).lower()
-            if vocab is not None and merged in vocab:
-                out = out[:-1] + line
-            else:
-                out = out + line
+            known_word = vocab is not None and merged in vocab
+            out = (out[:-1] if known_word else out) + line
         else:
             out = out + " " + line
     return _WS.sub(" ", out).strip()
@@ -82,6 +80,16 @@ _SENTENCE_END = re.compile(r"(?<=[.;:?!])\s+(?=[\"'(\[]?[A-Z0-9])")
 def split_sentences(text: str) -> list[str]:
     parts = [p.strip() for p in _SENTENCE_END.split(text)]
     return [p for p in parts if p]
+
+
+def slugify(text: str) -> str:
+    """Stable identifier fragment: "High consequence area" -> "high-consequence-area"."""
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def squash(text: str) -> str:
+    """Lower-case alphanumerics only, for fuzzy equality ("2.3.2. SCADA" ~ "2.3.2 Scada")."""
+    return re.sub(r"[^a-z0-9]", "", text.lower())
 
 
 def tail_tokens(text: str, max_tokens: int) -> str:
