@@ -5,7 +5,7 @@
           │
           ├── fetch ──────────► eCFR Versioner API ──► data/ecfr/title-49-part-19x.xml (pinned date)
           ▼
- Parser (per document family)                    backend/app/ingestion/parsers/
+ Parser (per document family)                    backend/app/ingestion/parsing/
    ecfr_xml                 section / definition / appendix (legal structure from XML)
    enforcement_guidance_pdf form fields, interpretations, advisory bulletins per code section
    faq_pdf                  one Q&A per FAQ, topic, cited sections, footnotes
@@ -15,7 +15,7 @@
           ▼
  ParsedDocument (Sections of Paragraphs, expected units, dictionaries)
           ▼
- Chunker                                         chunking.py
+ Chunker                                         chunking/
    keep section whole if it fits · else pack paragraphs, break at (a)/(b) · split tables by rows
    contextual header for embedding · cfr_refs / control_refs · deterministic ids · content hash
           ▼

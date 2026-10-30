@@ -1,7 +1,7 @@
 # Data model
 
-Implemented in `backend/app/ingestion/store.py` (knowledge base). Conversation and Message are
-query-side tables, still to be built.
+Knowledge base: `backend/app/ingestion/storage/schema.py`. Query log and conversations:
+`backend/app/query/storage/schema.py`.
 
 ## documents
 One row per approved source (`id` = registry id).
@@ -33,6 +33,26 @@ One row per retrievable passage.
 ## ingestion_runs
 id, started_at, finished_at, status (running, succeeded, partial, failed, aborted), options, per-document report, error.
 
-## Conversation, Message (planned)
-Conversation (id, created_at, filters) and Message (id, conversation_id, role, content,
-retrieved chunk ids with scores, latency metrics) to support FR-08, FR-10 and NFR-07.
+## query_logs
+One row per question (FR-10, NFR-07, US-08).
+
+| Column | Notes |
+|---|---|
+| id, created_at | `id` is the `query_id` returned with the answer |
+| question, standalone_question, history_turns, filters (jsonb) | What was asked; the rewritten question used for retrieval |
+| status, answer, error | answered, insufficient_evidence or failed |
+| retrieved (jsonb) | Every retrieved chunk: chunk_id, citation, fused score, per-signal ranks, in_context |
+| cited_chunk_ids[] | Chunks the answer cites |
+| timings, models, usage (jsonb) | Milliseconds per stage; embedding / rewrite / generation models; token usage |
+
+## conversations
+id, title (the first question), created_at, updated_at (FR-08).
+
+## conversation_messages
+| Column | Notes |
+|---|---|
+| id, conversation_id → conversations.id | cascade delete |
+| role, content, created_at | user question or assistant answer; a failed answer's content is the error shown to the user |
+| status | assistant only: answered, insufficient_evidence, failed |
+| citations (jsonb) | the citations as shown with the answer |
+| query_id, standalone_question | link to `query_logs` (US-08); the rewritten question used for retrieval |
